@@ -1,5 +1,6 @@
 package hellojpa;
 
+import hellojpa.domain.Book;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.EntityManager;
@@ -19,9 +20,12 @@ public class JpaMain {
         try{
 
 
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+
+            em.persist(book);
             tx.commit();
-
-
 
         }catch(Exception e){
             e.printStackTrace();
