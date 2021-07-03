@@ -17,9 +17,9 @@ public class Member extends BaseEntity {
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcodes;
+
+    @Embedded
+    private Address address;
 
     @OneToMany(mappedBy = "member")//잘못된코드라 보지만 예제를위해(무조건 단방향이 좋다)
     private List<Order> orders = new ArrayList<>();
@@ -30,9 +30,7 @@ public class Member extends BaseEntity {
         return "Member{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", zipcodes='" + zipcodes + '\'' +
+                ", address=" + address +
                 ", orders=" + orders +
                 '}';
     }
